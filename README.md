@@ -1,3 +1,4 @@
+
 # AquaSlim - Monitoramento Inteligente da Qualidade da Água
 
 Este repositório contém o projeto desenvolvido para a disciplina de **Objetos Inteligentes Conectados**.
@@ -8,24 +9,37 @@ Sistema de monitoramento da qualidade da água utilizando sensor de turbidez e a
 
 ## ✅ Componentes
 
-- Arduino Uno (simulado no Tinkercad)
-- Potenciômetro (simulando sensor de turbidez)
-- LED e resistor (simulando atuador - bomba)
-- Comunicação MQTT simulada via Serial Monitor
+- ESP32
+- Sensor de turbidez (simulado com potenciômetro)
+- LED (simula a bomba d’água)
+- Broker MQTT (HiveMQ)
+- Node-RED para visualização e controle
 
 ## ✅ Como reproduzir
 
-1. Abra o circuito no Tinkercad.
-2. Carregue o código Arduino.
-3. Inicie a simulação.
-4. Gire o potenciômetro e observe o acionamento do LED.
+1. Configure seu ESP32 com o código disponível em `/codigo/`.
+2. Monte o circuito conforme o diagrama na pasta `/diagramas/`.
+3. Configure seu Node-RED com os fluxos MQTT correspondentes aos tópicos utilizados.
+4. Ao detectar turbidez elevada, o LED será ativado e uma mensagem será publicada no tópico MQTT.
+5. O botão físico também pode ser usado para envio de eventos simulando interferências externas.
 
-## ✅ Estrutura do repositório
+## 📡 Comunicação e Protocolos
 
-- `/codigo/` — Código-fonte do Arduino.
-- `/imagens/` — Prints do circuito e simulação.
-- `/diagramas/` — Diagramas do circuito.
-- `/documentacao/` — Relatório completo do projeto.
+- Protocolo: MQTT
+- Broker: broker.hivemq.com
+- Porta: 1883
+- Tópicos:
+  - `aquaslim/sensors/turbidity` (publicações do sensor)
+  - `aquaslim/actuators/pump` (comando para a bomba)
+- Formato das mensagens: JSON
+
+## ✅ Estrutura do Repositório
+
+- `/codigo/` — Código-fonte para ESP32.
+- `/diagramas/` — Diagrama esquemático do circuito.
+- `/documentacao/` — Artigo completo do projeto.
+- `/imagens/` — Capturas de tela e montagem real.
+- `README.txt` — Você está aqui.
 
 ## ✅ Autor
 
