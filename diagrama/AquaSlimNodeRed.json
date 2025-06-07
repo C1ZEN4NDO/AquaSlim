@@ -1,0 +1,304 @@
+[
+    {
+        "id": "ab317d01e8b42e1e",
+        "type": "tab",
+        "label": "Fluxo 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "ea656ff8cbb88bb0",
+        "type": "mqtt in",
+        "z": "ab317d01e8b42e1e",
+        "name": "",
+        "topic": "botao/estado",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "16a6e7ad05b601ab",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 410,
+        "y": 60,
+        "wires": [
+            [
+                "11c5b1e08a4afaf5",
+                "ce2e4b1f7d8220dd"
+            ]
+        ]
+    },
+    {
+        "id": "aeeb440975d35914",
+        "type": "mqtt out",
+        "z": "ab317d01e8b42e1e",
+        "name": "",
+        "topic": "led/comando",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "16a6e7ad05b601ab",
+        "x": 690,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "11c5b1e08a4afaf5",
+        "type": "debug",
+        "z": "ab317d01e8b42e1e",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "b528d254bbfc9bbd",
+        "type": "inject",
+        "z": "ab317d01e8b42e1e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "on",
+        "payloadType": "str",
+        "x": 410,
+        "y": 180,
+        "wires": [
+            [
+                "aeeb440975d35914"
+            ]
+        ]
+    },
+    {
+        "id": "d86923214a6dc93a",
+        "type": "inject",
+        "z": "ab317d01e8b42e1e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "off",
+        "payloadType": "str",
+        "x": 410,
+        "y": 280,
+        "wires": [
+            [
+                "aeeb440975d35914"
+            ]
+        ]
+    },
+    {
+        "id": "b9bc2e9dbbadb608",
+        "type": "ui_button",
+        "z": "ab317d01e8b42e1e",
+        "name": "",
+        "group": "03f35cd804c73f62",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Desligar LED",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "off",
+        "payloadType": "str",
+        "topic": "led/comando",
+        "topicType": "msg",
+        "x": 410,
+        "y": 420,
+        "wires": [
+            [
+                "aeeb440975d35914"
+            ]
+        ]
+    },
+    {
+        "id": "308486e9c6508a16",
+        "type": "ui_button",
+        "z": "ab317d01e8b42e1e",
+        "name": "",
+        "group": "03f35cd804c73f62",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Ligar LED",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "on",
+        "payloadType": "str",
+        "topic": "led/comando",
+        "topicType": "msg",
+        "x": 400,
+        "y": 360,
+        "wires": [
+            [
+                "aeeb440975d35914"
+            ]
+        ]
+    },
+    {
+        "id": "ce2e4b1f7d8220dd",
+        "type": "ui_text",
+        "z": "ab317d01e8b42e1e",
+        "group": "03f35cd804c73f62",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "StatusTexto",
+        "label": "Status do botão",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 670,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "eda5494276085287",
+        "type": "ui_led",
+        "z": "ab317d01e8b42e1e",
+        "order": 2,
+        "group": "03f35cd804c73f62",
+        "width": 0,
+        "height": 0,
+        "label": "",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "off",
+                "valueType": "str"
+            },
+            {
+                "color": "#008000",
+                "value": "on",
+                "valueType": "str"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "LED Virtual",
+        "x": 690,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "f82ef2b58284f41e",
+        "type": "mqtt in",
+        "z": "ab317d01e8b42e1e",
+        "name": "",
+        "topic": "led/comando",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "16a6e7ad05b601ab",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 410,
+        "y": 500,
+        "wires": [
+            [
+                "eda5494276085287"
+            ]
+        ]
+    },
+    {
+        "id": "16a6e7ad05b601ab",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.hivemq.com",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "03f35cd804c73f62",
+        "type": "ui_group",
+        "name": "Controle",
+        "tab": "afcb20c76ec5cb1d",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "afcb20c76ec5cb1d",
+        "type": "ui_tab",
+        "name": "Dashboard",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
